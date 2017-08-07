@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "UserDashboard";
+}
+
+<h2>UserDashboard</h2>
+
+@if (Session["Username"] != null)
+{ <text>
+        Welcome @Session["Username"].ToString()</text>
+}
+
+<hr />
+
+
+@using (Html.BeginForm("UserDashboard", "Home",  FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <span>Browse your file :</span>
+    <input type="file" name="postedFile"/>
+    <hr />
+    <input type="submit" value="Upload"/>
+    <hr />
+    <span style="color:forestgreen">@ViewBag.Message</span>
+}
+
+
+<div>
+    @Html.ActionLink("Logout", "Login")
+</div>
